@@ -7,6 +7,7 @@ ESX = exports["es_extended"]:getSharedObject()
 
 RegisterServerEvent('esx:onPlayerDeath')
 AddEventHandler('esx:onPlayerDeath', function(data)
+        if not police then
     data.victim = source
     local xPlayer = ESX.GetPlayerFromId(data.victim)
     local rawInventory = exports.ox_inventory:Inventory(data.victim).items
@@ -22,6 +23,7 @@ AddEventHandler('esx:onPlayerDeath', function(data)
                 exports.ox_inventory:RemoveItem(data.victim, v.name, v.count, v.metadata)
             end
         end
+                end
     else
         for _,v in pairs(rawInventory) do
             inventory[#inventory + 1] = {
